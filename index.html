@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PREMIUM SERVICE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --main: #EAB308; --bg: #000; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: #fff; padding-bottom: 100px; overflow-x: hidden; }
+        
+        .glass { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(15px); }
+        .btn-primary { background: var(--main); color: #000; font-weight: 900; text-transform: uppercase; border-radius: 20px; transition: 0.2s; }
+        .btn-primary:active { transform: scale(0.95); }
+        
+        .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10,10,10,0.95); border-top: 1px solid rgba(255,255,255,0.05); padding: 12px 10px 25px 10px; display: flex; justify-content: space-around; z-index: 1000; border-radius: 35px 35px 0 0; }
+        .nav-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #444; transition: 0.3s; }
+        .nav-btn.active { color: var(--main); }
+        
+        .task-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 15px 20px; }
+        .task-icon { background: #1A1A1A; padding: 10px; border-radius: 12px; }
+    </style>
+</head>
+<body>
+
+    <header class="p-8 text-center">
+        <h1 class="text-3xl font-black italic uppercase tracking-tighter text-yellow-500">PREMIUM</h1>
+        <h1 class="text-3xl font-black italic uppercase tracking-tight text-white">SERVICE</h1>
+        <p class="text-xs opacity-40 mt-3 uppercase tracking-[3px] font-bold">Биржа услуг</p>
+    </header>
+
+    <main id="app-content" class="px-4 py-6"></main>
+
+    <!-- НИЖНЯЯ НАВИГАЦИЯ -->
+    <nav class="nav-bar">
+        <button onclick="window.nav('tasks')" id="n-tasks" class="nav-btn active">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2"/></svg>
+            <span class="text-[9px] font-black uppercase">Задания</span>
+                    </button>
+        <button onclick="window.nav('balance')" id="n-balance" class="nav-btn">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-width="2"/></svg>
+            <span class="text-[9px] font-black uppercase">Баланс</span>
+        </button>
+        <button onclick="window.nav('referral')" id="n-referral" class="nav-btn">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-3-3h-2M9 3a3 3 0 110 6 3 3 0 010-6zM13.8 13.8c0-0.558.442-1 1-1h4v1.5c0 .828-.672 1.5-1.5 1.5h-3.5a1 1 0 01-1-1zM14.8 16.3a3 3 0 01-1.3-2.4V10a1 1 0 00-1-1h-3a1 1 0 00-1 1v7.5a3 3 0 01-1.3 2.4M7 19h4v-3a1 1 0 00-1-1H8a1 1 0 00-1 1v3z" stroke-width="2"/></svg>
+            <span class="text-[9px] font-black uppercase">Рефералы</span>
+        </button>
+        <button onclick="window.nav('support')" id="n-support" class="nav-btn">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-width="2"/></svg>
+            <span class="text-[9px] font-black uppercase">Связь</span>
+        </button>
+    </nav>
+
+    <!-- МОДАЛКА ОПЛАТЫ / ПОПОЛНЕНИЯ -->
+    <div id="pay-modal" class="fixed inset-0 bg-black/95 flex items-center justify-center hidden z-[2000] p-6">
+        <div class="bg-[#111] w-full max-w-sm p-8 rounded-[40px] text-center border border-white/10 shadow-2xl">
+            <h2 id="pay-modal-title" class="text-2xl font-black mb-6 uppercase text-yellow-500 italic">Пополнение баланса</h2>
+            <div id="pay-form">
+                <div class="space-y-3 mb-8">
+                    <div onclick="window.copy('4100119121976236')" class="bg-white/5 p-4 rounded-2xl text-left border border-white/5">
+                        <p class="text-[9px] opacity-30 uppercase font-black">ЮMoney</p>
+                        <p class="text-sm font-black italic tracking-tighter">4100 1191 2197 6236</p>
+                    </div>
+                                        <div onclick="window.copy('2200701955299232')" class="bg-white/5 p-4 rounded-2xl text-left border border-white/5">
+                        <p class="text-[9px] opacity-30 uppercase font-black">Карта Т-Банк</p>
+                        <p class="text-sm font-black italic tracking-tighter">2200 7019 5529 9232</p>
+                    </div>
+                    <div onclick="window.copy('+79501700787')" class="bg-white/5 p-4 rounded-2xl text-left border border-white/5">
+                        <p class="text-[9px] opacity-30 uppercase font-black">СБП</p>
+                        <p class="text-sm font-black italic tracking-tighter">+7 950 170 07 87</p>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <p class="text-xs opacity-50 mb-2">Введите промокод (если есть):</p>
+                    <div class="flex gap-2">
+                        <input type="text" id="promo-code" placeholder="ПРОМОКОД" class="flex-1 glass p-3 rounded-xl text-center text-sm font-black uppercase focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <button onclick="window.applyPromo()" class="btn-primary px-6 py-3 text-xs">Применить</button>
+                    </div>
+                     <p id="promo-message" class="text-[9px] mt-2"></p>
+                </div>
+                <div>
+                    <p class="text-xs opacity-50 mb-2">Сумма пополнения:</p>
+                    <div class="flex gap-2 justify-center flex-wrap">
+                      <button onclick="window.setAmount(100)" class="px-4 py-2 text-sm font-black glass rounded-xl">100 ₽</button>
+                        <button onclick="window.setAmount(500)" class="px-4 py-2 text-sm font-black glass rounded-xl">500 ₽</button>
+                        <button onclick="window.setAmount(1000)" class="px-4 py-2 text-sm font-black glass rounded-xl">1000 ₽</button>
+                         <input type="number" id="custom-amount" placeholder="Другая сумма" min="10" class="w-32 glass p-3 rounded-xl text-center text-sm font-black focus:outline-none focus:ring-2 focus:ring-yellow-500" oninput="window.setAmount(this.value)">
+                    </div>
+                    <p class="mt-4 text-sm font-black text-yellow-500" id="amount-to-pay">На баланс: 100 ₽</p>
+                </div>
+                <button onclick="window.finishPay('donate')" class="w-full py-5 btn-primary mt-8">ПОПОЛНИТЬ БАЛАНС</button>
+            </div>
+             <button onclick="window.closePay()" class="mt-4 text-[10px] font-black opacity-30 uppercase tracking-widest hover:opacity-100 transition-all">Вернуться назад</button>
+        </div>
+    </div>
+
+    <!-- МОДАЛКА УСПЕХА -->
+    <div id="success-modal" class="fixed inset-0 bg-black/95 flex items-center justify-center hidden z-[3000] p-6">
+        <div class="bg-[#111] w-full max-w-sm p-10 rounded-[40px] text-center border border-yellow-500/30 shadow-xl">
+            <div class="text-6xl mb-6 text-yellow-500">❤️</div>
+            <h2 id="success-modal-title" class="text-2xl font-black mb-4 uppercase">Спасибо!</h2>
+            <p id="success-modal-text" class="text-sm opacity-70 mb-8 leading-relaxed">Ваш вклад очень важен для нас.</p>
+            <button id="success-modal-button-action" onclick="window.nav('tasks')" class="w-full py-6 btn-primary text-sm">На главную</button>
+            <button onclick="document.getElementById('success-modal').classList.add('hidden')" class="mt-6 text-[10px] font-black opacity-30 uppercase tracking-widest hover:opacity-100 transition-all">Закрыть</button>
+        </div>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.ready(); tg.expand();
+
+        // ----- ВАШИ ДАННЫЕ -----
+        const BOT_TOKEN = '8637015814:AAH_4-QvH1DQB3XrYO-4MzbEz0nIwpNXN0w'; // Токен вашего бота
+        const ADMIN_ID = '8553862867'; // ID вашего админа
+        // ------------------------
+
+        window.db = JSON.parse(localStorage.getItem('premium_service_data')) || {
+            userBalance: 0, userReferralId: null, referralLink: '', tasksAvailable: 0, promoCodes: {}, lastDonateTime: 0
+        };
+        window.save = () => localStorage.setItem('premium_service_data', JSON.stringify(window.db));
+
+        window.currentAmount = 100; // Сумма по умолчанию
+        window.payType = 'donate'; // Тип операции: 'donate' или 'buy'
+
+        window.nav = (p) => {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('n-'+p).classList.add('active');
+            window.renderContent(p);
+        };
+
+        window.renderContent = (page) => {
+            const content = document.getElementById('app-content');
+            let html = '';
+
+            switch(page) {
+                case 'tasks':
+                    html = `
+                        <div class="mb-6">
+                            <p class="text-lg font-black text-yellow-500 mb-2">Задания</p>
+                            <p class="text-xs opacity-50 mb-4">Доступно: <span class="font-bold text-white">${window.db.tasksAvailable}</span></p>
+                            <div class="space-y-4">
+                            <div class="task-card flex justify-between items-center">
+                                    <div class="flex items-center gap-3">
+                                        <div class="task-icon"><svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2"/></svg></div>
+                                        <div>
+                                            <p class="font-bold text-sm">Подписка на канал</p>
+                                            <p class="text-xs opacity-50">Начислим: <span class="font-bold text-white">5 ₽</span></p>
+                                        </div>
+                                    </div>
+                                    <button class="btn-primary px-5 py-2 text-xs" onclick="window.takeTask('subscribe')">Взять</button>
+                                </div>
+                                 <div class="task-card flex justify-between items-center">
+                                    <div class="flex items-center gap-3">
+                                        <div class="task-icon"><svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-width="2"/></svg></div>
+                                        <div>
+                                            <p class="font-bold text-sm">Реакция на пост</p>
+                                            <p class="text-xs opacity-50">Начислим: <span class="font-bold text-white">2 ₽</span></p>
+                                        </div>
+                                    </div>
+                                    <button class="btn-primary px-5 py-2 text-xs" onclick="window.takeTask('reaction')">Взять</button>
+                                </div>
+                                 <div class="task-card flex justify-between items-center">
+                                    <div class="flex items-center gap-3">
+                                        <div class="task-icon"><svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2"/></svg></div>
+                                        <div>
+                                            <p class="font-bold text-sm">Просмотр видео</p>
+                                            <p class="text-xs opacity-50">Начислим: <span class="font-bold text-white">3 ₽</span></p>
+                                        </div>
+                                    </div>
+                                    <button class="btn-primary px-5 py-2 text-xs" onclick="window.takeTask('view')">Взять</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'balance':
+                     html = `
+                        <div class="text-center">
+                            <p class="text-lg font-black text-yellow-500 mb-2">Баланс</p>
+                            <p class="text-4xl font-black italic text-white mb-6">${window.db.userBalance} ₽</p>
+                            <button onclick="window.openPay(); document.getElementById('pay-modal-title').innerText = 'Пополнение баланса';" class="btn-primary px-16 py-6 text-lg shadow-2xl shadow-yellow-500/30">ПОПОЛНИТЬ БАЛАНС</button>
+                        </div>
+                    `;
+                    break;
+                case 'referral':
+                     html = `
+                        <div class="text-center">
+                            <p class="text-lg font-black text-yellow-500 mb-2">Реферальная программа</p>
+                            <p class="text-xs opacity-50 mb-4">Приглашай друзей и зарабатывай!</p>
+                            <div class="task-card mb-6">
+                                <p class="text-sm font-bold mb-2">Твой ID: ${window.db.userReferralId || 'Не определен'}</p>
+                                <p class="text-xs opacity-50 break-all">${window.db.referralLink || 'Генерация ссылки...'}</p>
+                            </div>
+                            <p class="text-xs opacity-50">За каждого приглашенного друга ты получишь <span class="font-bold text-white">10 ₽</span></p>
+                        </div>
+                    `;
+                    break;
+                 case 'support':
+                    html = `
+                        <div class="text-center">
+                            <p class="text-lg font-black text-yellow-500 mb-2">Связь с нами</p>
+                            <p class="text-sm opacity-70 mb-6">Если у тебя возникли вопросы или проблемы, свяжись с нами.</p>
+                            <button onclick="window.open('https://t.me/nmproda')" class="w-full py-6 btn-primary text-sm mb-4">НАПИСАТЬ АДМИНУ</button>
+                            <button onclick="window.open('https://t.me/premium_service_support')" class="w-full py-6 btn-primary bg-white/10 text-sm">ТЕХ. ПОДДЕРЖКА</button>
+                        </div>
+                    `;
+                    break;
+            }
+            content.innerHTML = html;
+        };
+
+        window.openPay = () => {
+             document.getElementById('pay-modal').classList.remove('hidden');
+        };
+        window.closePay = () => document.getElementById('pay-modal').classList.add('hidden');
+        window.copy = (t) => { navigator.clipboard.writeText(t); tg.showAlert("Скопировано!"); };
+
+        window.setAmount = (amount) => {
+            window.currentAmount = parseFloat(amount) || 0;
+            const promoBonus = window.db.promoCodes[document.getElementById('promo-code').value.toUpperCase()] || 0;
+            const totalAmount = window.currentAmount + promoBonus;
+            document.getElementById('amount-to-pay').innerText = `На баланс: ${window.currentAmount} ₽ (+${promoBonus} ₽ бонус)`;
+        };
+
+        window.applyPromo = () => {
+            const promoInput = document.getElementById('promo-code');
+            const promo = promoInput.value.toUpperCase();
+            const bonus = window.db.promoCodes[promo];
+            const messageEl = document.getElementById('promo-message');
+
+            if (bonus) {
+                messageEl.innerText = `Бонус ${bonus} ₽ добавлен!`;
+                messageEl.style.color = 'lime';
+                window.setAmount(window.currentAmount); // Пересчитываем сумму
+            } else {
+                messageEl.innerText = 'Неверный или истекший промокод';
+                messageEl.style.color = 'red';
+            }
+        };
+        
+        window.takeTask = async (taskType) => {
+             tg.HapticFeedback.impactOccurred('medium');
+             // Здесь будет логика отправки команды боту для получения задания
+             // Пока что просто показываем уведомление
+            tg.showAlert(`Задание "${taskType}" взято! Выполните его и получите награду.`);
+            window.db.tasksAvailable--; // Уменьшаем счетчик доступных заданий
+            window.save();
+            window.renderContent('tasks'); // Обновляем экран заданий
+        };
+
+        window.finishPay = async (type) => {
+            const user = tg.initDataUnsafe.user || {id: 0, username: 'guest'};
+            const amount = window.currentAmount;
+            const promoCode = document.getElementById('promo-code').value.toUpperCase();
+            const bonus = window.db.promoCodes[promoCode] || 0;
+            const finalAmount = amount +bonus;
+
+            // Отправка информации админу
+            const message = type === 'donate' 
+                ? `💸 ПОПОЛНЕНИЕ БАЛАНСА\n👤 @${user.username} (ID: ${user.id})\n💰 Сумма: ${amount} ₽\n🎁 Бонус: ${bonus} ₽\n➡️ Итого: ${finalAmount} ₽\n(Промокод: ${promoCode || 'нет'})`
+                : `🛒 ПОКУПКА (тип: ${type})\n👤 @${user.username} (ID: ${user.id})\n💰 Сумма: ${finalAmount} ₽`;
+
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST', headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ chat_id: ADMIN_ID, text: message })
+                });
+
+                if (type === 'donate') {
+                    window.db.userBalance += finalAmount;
+                    window.db.lastDonateTime = Date.now();
+                     // Обнуляем промокод после использования (или можно сделать одноразовым)
+                     if (bonus > 0) delete window.db.promoCodes[promoCode];
+                }
+                 window.save();
+
+                window.closePay();
+                document.getElementById('success-modal').classList.remove('hidden');
+                document.getElementById('success-modal-title').innerText = type === 'donate' ? "Баланс пополнен!" : "Заказ оплачен!";
+                document.getElementById('success-modal-text').innerText = type === 'donate' ? `На ваш баланс зачислено ${finalAmount} ₽.` : `Ваш заказ успешно оплачен. Ожидайте выполнения.`;
+                document.getElementById('success-modal-button-action').onclick = () => { 
+                    document.getElementById('success-modal').classList.add('hidden');
+                    window.nav('balance'); // Возврат в раздел баланса после пополнения
+                };
+                tg.showAlert("Операция успешно завершена!");
+
+            } catch (error) {
+                console.error("Ошибка операции:", error);
+                tg.showAlert("Произошла ошибка. Попробуй позже.");
+            }
+        };
+
+        // Инициализация
+        window.onload = () => {
+             // Имитация данных пользователя, если не в WebApp
+            if (!tg.initDataUnsafe.user) {
+                 tg.initDataUnsafe.user = { id: 123456789, username: 'testuser' };
+                 // Имитация данных для теста
+                 window.db.userBalance = 50;
+                 window.db.userReferralId = 987654321;
+                 window.db.referralLink = `https://t.me/YourBotName?startapp=ref_${window.db.userReferralId}`;
+                 window.db.tasksAvailable = 15;
+                 window.db.promoCodes = { TEST10: 10, BONUS50: 50 }; // Пример промокодов
+                 window.save();
+            } else {
+                // Если есть данные пользователя, получаем его ID и генерируем ссылку
+                 window.db.userReferralId = tg.initDataUnsafe.user.id;
+                 window.db.referralLink = `https://t.me/YourBotName?startapp=ref_${window.db.userReferralId}`; // Замени YourBotName на юзернейм твоего бота
+                 // Загружаем доступные задания (в реальном приложении это будет запрос к боту)
+                 window.db.tasksAvailable = Math.floor(Math.random() * 20) + 5; // Случайное число заданий
+            }
+
+            window.nav('tasks'); // Начинаем с раздела Задания
+        };
+    </script>
+</body>
+</html>
