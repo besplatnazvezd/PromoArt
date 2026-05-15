@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструкция по покупке</title>
+    <style>
+        /* Спокойная цветовая гамма */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5; /* Мягкий светлый фон */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #ffffff;
+            min-height: 100vh;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .header-img {
+            width: 100%;
+            display: block;
+            border-bottom: 3px solid #5dade2;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 22px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .separator {
+            color: #bdc3c7;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .step {
+            margin-bottom: 25px;
+            text-align: left;
+            background: #fdfdfd;
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #5dade2;
+        }
+
+        .step-num {
+            background: #5dade2;
+            color: white;
+            width: 28px;
+            height: 28px;
+            display: inline-block;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .example-box {
+            background: #eef7fe;
+            border: 1px dashed #5dade2;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+
+        .admin-note {
+            background: #fff4e5;
+            border: 1px solid #ffe0b2;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+
+        .trust-badge {
+            margin-top: 30px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 0.85em;
+            color: #7f8c8d;
+        }
+
+        .footer {
+            margin-top: 20px;
+                      font-size: 0.8em;
+            color: #bdc3c7;
+            padding-bottom: 30px;
+        }
+
+        /* Анимация появления */
+        .step {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://i.ibb.co/fdpvy0D7/IMG-20260417-145209-663.jpg" alt="Header" class="header-img">
+
+    <div class="content">
+        <h1>ИНСТРУКЦИЯ ПО ПРОЧИМ ТОВАРАМ</h1>
+        
+        <div class="separator">➖➖➖➖➖</div>
+
+        <!-- Шаг 1 -->
+        <div class="step">
+            <span class="step-num">1</span> <strong>Выбор товара</strong>
+            <p>Выберите нужную категорию или услугу из предложенного списка в нашем магазине.</p>
+        </div>
+
+        <div class="separator">➖➖➖➖➖</div>
+
+        <!-- Шаг 2 -->
+        <div class="step">
+            <span class="step-num">2</span> <strong>Оплата</strong>
+            <p>Произведите оплату любым удобным способом. Все платежи защищены, а статус заказа обновляется мгновенно.</p>
+        </div>
+
+        <div class="separator">➖➖➖➖➖</div>
+
+        <!-- Шаг 3 -->
+        <div class="step">
+            <span class="step-num">3</span> <strong>Данные для доставки</strong>
+            <p>В поле комментария или доставки укажите данные, куда именно нужно отправить товар.</p>
+            <div class="example-box">
+                Например: <b>@nnnnn</b> (Telegram Stars) или <b>ID: 12345678</b> (внутриигровой ID).
+            </div>
+        </div>
+
+        <!-- Шаг 3.1 -->
+        <div class="step admin-note">
+            <strong>💡 Нужна помощь админа?</strong>
+            <p>Если для выполнения заказа вам обязательно нужен диалог с администратором (уточнить детали или особые просьбы), просто введите символ <b>"."</b> (точку) в поле заказа.</p>
+        </div>
+
+        <div class="separator">➖➖➖➖➖</div>
+
+        <!-- Шаг 4 -->
+        <div class="step">
+            <span class="step-num">4</span> <strong>Получение товара</strong>
+            <p>Администратор свяжется с вами, если вы указали <b>"."</b>, либо для финального подтверждения успешной отправки товара.</p>
+        </div>
+
+        <!-- Блок доверия -->
+        <div class="trust-badge">
+            ✅ <b>Гарантия безопасности:</b> Мы дорожим своей репутацией. <br>
+            🚀 <b>Скорость:</b> Среднее время обработки заказа — от 5 до 30 минут. <br>
+            🎧 <b>Поддержка:</b> Мы на связи, чтобы ваш товар был доставлен точно по адресу.
+        </div>
+
+        <div class="footer">
+            © 2024 Все права защищены
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
