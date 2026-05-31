@@ -3,178 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Инструкция по покупке</title>
+    <title>RULES & FAQ | BOSS STORE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Спокойная цветовая гамма */
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f0f2f5; /* Мягкий светлый фон */
-            color: #333;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b;
+            color: #fafafa;
         }
-
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: #ffffff;
-            min-height: 100vh;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        .boss-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
         }
-
-        .header-img {
-            width: 100%;
-            display: block;
-            border-bottom: 3px solid #5dade2;
+        .glass-card {
+            background: rgba(24, 24, 27, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-
-        .content {
-            padding: 20px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #2c3e50;
-            font-size: 22px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .separator {
-            color: #bdc3c7;
-            margin: 20px 0;
-            font-weight: bold;
-        }
-
-        .step {
-            margin-bottom: 25px;
-            text-align: left;
-            background: #fdfdfd;
-            padding: 15px;
-            border-radius: 12px;
-            border-left: 4px solid #5dade2;
-        }
-
-        .step-num {
-            background: #5dade2;
-            color: white;
-            width: 28px;
-            height: 28px;
-            display: inline-block;
-            text-align: center;
-            border-radius: 50%;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-        .example-box {
-            background: #eef7fe;
-            border: 1px dashed #5dade2;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 8px;
+        .text-boss {
+            font-weight: 900;
             font-style: italic;
-            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
         }
-
-        .admin-note {
-            background: #fff4e5;
-            border: 1px solid #ffe0b2;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 0.95em;
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
-
-        .trust-badge {
-            margin-top: 30px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            font-size: 0.85em;
-            color: #7f8c8d;
+        .animate-shine {
+            position: relative;
+            overflow: hidden;
         }
-
-        .footer {
-            margin-top: 20px;
-                      font-size: 0.8em;
-            color: #bdc3c7;
-            padding-bottom: 30px;
-        }
-
-        /* Анимация появления */
-        .step {
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .animate-shine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            transform: skewX(-25deg);
+            animation: shine 3s infinite;
         }
     </style>
 </head>
-<body>
+<body class="p-4 sm:p-8 max-w-2xl mx-auto">
 
-<div class="container">
-    <img src="https://i.ibb.co/fdpvy0D7/IMG-20260417-145209-663.jpg" alt="Header" class="header-img">
-
-    <div class="content">
-        <h1>ИНСТРУКЦИЯ ПО ПРОЧИМ ТОВАРАМ</h1>
-        
-        <div class="separator">➖➖➖➖➖</div>
-
-        <!-- Шаг 1 -->
-        <div class="step">
-            <span class="step-num">1</span> <strong>Выбор товара</strong>
-            <p>Выберите нужную категорию или услугу из предложенного списка в нашем магазине.</p>
+    <!-- HEADER -->
+    <header class="text-center mb-10 pt-6">
+        <div class="inline-block boss-gradient px-4 py-1 rounded-full text-[10px] font-black tracking-widest uppercase mb-4 animate-shine">
+            Официальный гайд
         </div>
+        <h1 class="text-4xl text-boss italic leading-none mb-2">BOSS STORE<br><span class="text-indigo-500">RULES & FAQ</span></h1>
+        <p class="text-zinc-500 text-xs uppercase tracking-widest">Всё, что нужно знать перед покупкой</p>
+    </header>
 
-        <div class="separator">➖➖➖➖➖</div>
-
-        <!-- Шаг 2 -->
-        <div class="step">
-            <span class="step-num">2</span> <strong>Оплата</strong>
-            <p>Произведите оплату любым удобным способом. Все платежи защищены, а статус заказа обновляется мгновенно.</p>
-        </div>
-
-        <div class="separator">➖➖➖➖➖</div>
-
-        <!-- Шаг 3 -->
-        <div class="step">
-            <span class="step-num">3</span> <strong>Данные для доставки</strong>
-            <p>В поле комментария или доставки укажите данные, куда именно нужно отправить товар.</p>
-            <div class="example-box">
-                Например: <b>@nnnnn</b> (Telegram Stars) или <b>ID: 12345678</b> (внутриигровой ID).
+    <!-- SECTION: КАК КУПИТЬ -->
+    <section class="mb-10">
+        <h2 class="text-boss text-xl mb-4 flex items-center gap-2">
+            <span class="w-8 h-8 boss-gradient rounded-lg flex items-center justify-center text-sm">01</span>
+            Как сделать заказ
+        </h2>
+        <div class="glass-card rounded-[2rem] p-6 space-y-6">
+            <div class="flex gap-4">
+                               <div class="text-indigo-500 font-bold text-lg">1.</div>
+                <p class="text-zinc-400 text-sm leading-relaxed">Выберите товар и в поле <span class="text-white font-bold italic">"Пожелания"</span> укажите ваш <span class="text-indigo-400">@username</span> и пожелания заказа (например : надо, чтоб все выглядело профессионально, вот цвета (...), что нужно сделать (...).</p>
+            </div>
+            <div class="flex gap-4 border-t border-white/5 pt-6">
+                <div class="text-indigo-500 font-bold text-lg">2.</div>
+                <p class="text-zinc-400 text-sm leading-relaxed">Оплатите заказ через <span class="text-white font-bold">Карта</span> или <span class="text-white font-bold">CryptoBot</span>. После оплаты ваш заказ мгновенно улетает администратору.</p>
+            </div>
+            <div class="flex gap-4 border-t border-white/5 pt-6">
+                <div class="text-indigo-500 font-bold text-lg">3.</div>
+                <p class="text-zinc-400 text-sm leading-relaxed">Администратор видит оплату, изучает ваши пожелания и приступает к <span class="text-yellow-500 font-bold italic">ручной сборке</span> вашего товара.</p>
             </div>
         </div>
+    </section>
 
-        <!-- Шаг 3.1 -->
-        <div class="step admin-note">
-            <strong>💡 Нужна помощь админа?</strong>
-            <p>Если для выполнения заказа вам обязательно нужен диалог с администратором (уточнить детали или особые просьбы), просто введите символ <b>"."</b> (точку) в поле заказа.</p>
+    <!-- SECTION: ПОЛУЧЕНИЕ ТОВАРА -->
+    <section class="mb-10">
+        <h2 class="text-boss text-xl mb-4 flex items-center gap-2">
+            <span class="w-8 h-8 boss-gradient rounded-lg flex items-center justify-center text-sm">02</span>
+            Сроки и получение
+        </h2>
+        <div class="glass-card rounded-[2rem] p-6 space-y-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)] border-indigo-500/20 border">
+            <div class="bg-indigo-500/10 rounded-2xl p-4 border border-indigo-500/20">
+                <h4 class="text-white font-bold text-sm mb-1">⏱ СКОЛЬКО ЖДАТЬ?</h4>
+                <p class="text-zinc-400 text-[13px] leading-relaxed italic">
+                    Так как мы делаем каждый заказ качественно и под ваши нужды, выдача занимает от <span class="text-white font-bold text-base mx-1">15 минут до 3-х часов. Услуги связанные с коддингом не относятся к данному времени (получение зависит от объема работы).</span>.
+                </p>
+            </div>
+            <div class="bg-zinc-800/50 rounded-2xl p-4">
+                <h4 class="text-white font-bold text-sm mb-1">📩 ГДЕ Я ПОЛУЧУ ТОВАР?</h4>
+                <p class="text-zinc-400 text-[13px]"> 
+                                        Администратор лично напишет вам в <span class="text-indigo-400 font-bold">Telegram</span> и пришлет данные/услугу. Убедитесь, что вам можно написать (есть @username, в крайнем случае отправьте ID аккаунта).
+                </p>
+            </div>
         </div>
+    </section>
 
-        <div class="separator">➖➖➖➖➖</div>
-
-        <!-- Шаг 4 -->
-        <div class="step">
-            <span class="step-num">4</span> <strong>Получение товара</strong>
-            <p>Администратор свяжется с вами, если вы указали <b>"."</b>, либо для финального подтверждения успешной отправки товара.</p>
+    <!-- SECTION: FAQ -->
+    <section class="mb-10">
+        <h2 class="text-boss text-xl mb-4 flex items-center gap-2">
+            <span class="w-8 h-8 boss-gradient rounded-lg flex items-center justify-center text-sm">03</span>
+            Частые вопросы
+        </h2>
+        <div class="space-y-3">
+            <div class="glass-card rounded-2xl p-5">
+                <p class="text-white font-bold text-sm mb-2 italic uppercase tracking-tighter">Можно ли сделать возврат?</p>
+                <p class="text-zinc-500 text-xs leading-relaxed">Возврат средств возможен только в случае, если администратор еще не приступил к работе над вашим заказом.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-5">
+                <p class="text-white font-bold text-sm mb-2 italic uppercase tracking-tighter">Что если я ошибся в пожеланиях?</p>
+                <p class="text-zinc-500 text-xs leading-relaxed">Сразу напишите в поддержку @nmproda, опишите ваш товар+пожелания, мы всё поправим!</p>
+            </div>
         </div>
+    </section>
 
-        <!-- Блок доверия -->
-        <div class="trust-badge">
-            ✅ <b>Гарантия безопасности:</b> Мы дорожим своей репутацией. <br>
-            🚀 <b>Скорость:</b> Среднее время обработки заказа — от 5 до 30 минут. <br>
-            🎧 <b>Поддержка:</b> Мы на связи, чтобы ваш товар был доставлен точно по адресу.
+    <!-- FOOTER / SUPPORT -->
+    <footer class="mt-20 pb-12">
+        <div class="bg-indigo-600 rounded-[2.5rem] p-8 text-center relative overflow-hidden shadow-[0_20px_50px_rgba(79,70,229,0.3)]">
+            <div class="absolute top-0 left-0 w-full h-full opacity-20" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
+            <h3 class="text-white text-2xl text-boss italic mb-2 relative z-10">Остались вопросы?</h3>
+            <p class="text-indigo-100 text-[10px] uppercase tracking-widest mb-6 relative z-10 opacity-80">Администрация всегда поможет</p>
+            <a href="https://t.me/7727345054" class="inline-block bg-white text-indigo-950 font-black text-xs uppercase px-10 py-4 rounded-full shadow-xl hover:scale-105 transition-transform relative z-10">
+                Написать Администратору ➔
+            </a>
         </div>
-
-        <div class="footer">
-            © 2024 Все права защищены
-        </div>
-    </div>
-</div>
+        <p class="text-center text-zinc-600 text-[10px] mt-8 uppercase tracking-[0.3em]">BOSS STORE © 2024 • Все права защищены</p>
+    </footer>
 
 </body>
 </html>
