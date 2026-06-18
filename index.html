@@ -120,6 +120,81 @@
         </div>
     </section>
 
+      <!-- ========================================== -->
+    <!-- ⚖️ ЮРИДИЧЕСКИЙ БЛОК ДЛЯ МОДЕРАЦИИ ЮКАССЫ -->
+    <!-- ========================================== -->
+    <section class="mb-10 space-y-4">
+        <h2 class="text-boss text-xl mb-4 flex items-center gap-2">
+            <span class="w-8 h-8 boss-gradient rounded-lg flex items-center justify-center text-sm">⚖️</span>
+            Юридическая информация
+        </h2>
+
+        <!-- 1. Карточка с твоими реквизитами -->
+        <div class="glass-card rounded-[2rem] p-6 space-y-3">
+            <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-2">Контакты и реквизиты</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-zinc-400">
+                <div>
+                    <span class="text-zinc-600 block uppercase font-bold text-[9px] mb-1">Исполнитель (Продавец):</span>
+                    <!-- ВНИМАНИЕ! ЗАМЕНИ НА СВОЁ ФИО -->
+                    <span class="text-white font-bold text-sm">Самозанятый [Твоё ФИО]</span>
+                </div>
+                <div>
+                    <span class="text-zinc-600 block uppercase font-bold text-[9px] mb-1">ИНН налогоплательщика:</span>
+                    <!-- ВНИМАНИЕ! ЗАМЕНИ НА СВОЙ ИНН (Крайне важно для ЮКассы!) -->
+                    <span class="text-white font-mono font-bold text-sm">[Твой ИНН]</span>
+                </div>
+                <div>
+                    <span class="text-zinc-600 block uppercase font-bold text-[9px] mb-1">Электронная почта:</span>
+                    <!-- ВНИМАНИЕ! ЗАМЕНИ НА СВОЙ EMAIL -->
+                    <span class="text-white font-bold">[Твой Email]</span>
+                </div>
+                <div>
+                    <span class="text-zinc-600 block uppercase font-bold text-[9px] mb-1">Связь в Telegram:</span>
+                    <a href="https://t.me/nmproda" target="_blank" class="text-indigo-400 font-bold hover:underline">@nmproda</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Договор Публичной Оферты (Раскрывающийся) -->
+        <details class="glass-card rounded-2xl p-4 cursor-pointer group transition duration-300">
+            <summary class="text-white font-bold text-xs uppercase tracking-wider flex justify-between items-center select-none">
+                <span>Договор публичной оферты</span>
+                <i class="fa-solid fa-chevron-down text-zinc-600 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="text-[11px] text-zinc-500 leading-relaxed space-y-3 mt-4 border-t border-white/5 pt-4 cursor-auto">
+                <p><strong>1. Общие положения</strong><br>
+                Настоящий документ является публичной офертой Самозанятого лица, именуемого в дальнейшем «Исполнитель», и содержит все существенные условия по оказанию услуг разработки, настройки программного обеспечения (Telegram-ботов, сайтов) и предоставлению цифровых товаров.</p>
+                
+                <p><strong>2. Предмет договора</strong><br>
+                Исполнитель обязуется оказать услуги или предоставить цифровой товар в соответствии с заказом Покупателя, оформленным через интерфейс сайта, а Покупатель обязуется оплатить их в полном объеме.</p>
+                
+                <p><strong>3. Порядок оплаты и предоставления товара/услуг</strong><br>
+                Оплата производится в размере 100% предоплаты через авторизованные платежные шлюзы, интегрированные на сайте. Цифровой товар (файлы, доступы, скрипты) или услуга предоставляются Покупателю лично администратором в мессенджере Telegram в течение сроков, указанных в разделе «Сроки и получение».</p>
+                
+                <p><strong>4. Политика возврата денежных средств</strong><br>
+                В соответствии с законодательством РФ, цифровые товары надлежащего качества, после их фактического предоставления в электронном виде, возврату и обмену не подлежат, так как покупатель приобретает право на использование объекта авторского права. Возврат средств возможен исключительно до момента начала выполнения работы Исполнителем.</p>
+            </div>
+        </details>
+
+        <!-- 3. Политика Конфиденциальности (Раскрывающийся) -->
+        <details class="glass-card rounded-2xl p-4 cursor-pointer group transition duration-300">
+            <summary class="text-white font-bold text-xs uppercase tracking-wider flex justify-between items-center select-none">
+                <span>Политика конфиденциальности</span>
+                <i class="fa-solid fa-chevron-down text-zinc-600 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="text-[11px] text-zinc-500 leading-relaxed space-y-3 mt-4 border-t border-white/5 pt-4 cursor-auto">
+                <p><strong>1. Сбор персональных данных</strong><br>
+                Мы обрабатываем только те данные, которые необходимы для выполнения вашего заказа: ваш Telegram ID, юзернейм в мессенджере Telegram и историю покупок.</p>
+                
+                <p><strong>2. Цели обработки данных</strong><br>
+                Персональные данные используются исключительно для идентификации покупателя, доставки приобретенного цифрового товара или связи для уточнения технического задания.</p>
+                
+                <p><strong>3. Безопасность и третьи лица</strong><br>
+                Мы гарантируем полную конфиденциальность. Данные никогда не передаются третьим лицам, за исключением случаев обязательного исполнения платежа через сертифицированный платежный агрегатор (ЮKassa).</p>
+            </div>
+        </details>
+    </section>
+    
     <!-- FOOTER / SUPPORT -->
     <footer class="mt-20 pb-12">
         <div class="bg-indigo-600 rounded-[2.5rem] p-8 text-center relative overflow-hidden shadow-[0_20px_50px_rgba(79,70,229,0.3)]">
